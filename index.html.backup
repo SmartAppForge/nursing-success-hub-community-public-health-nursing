@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -572,10 +572,6 @@
 
 
     <!-- Product registry -->
-<!-- Nursing Success Hub Product ID -->
-<script>
-    window.NSH_PRODUCT_ID = "community-public-health-nursing";
-</script>
     <script src="config/products.js"></script>
 
     <!-- Master quiz engine. It dynamically loads the selected question bank. -->

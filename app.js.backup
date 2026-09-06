@@ -49,35 +49,8 @@ let QUESTION_BANK_SCRIPT = null;
    ============================================================ */
 
 function getProductKeyFromUrl() {
-
-    const params = new URLSearchParams(
-        window.location.search
-    );
-
-    /*
-     * Priority:
-     * 1. ?product=... in URL
-     * 2. window.NSH_PRODUCT_ID defined by the application
-     * 3. template as final fallback
-     */
-
-    const urlProduct =
-        params.get("product");
-
-    if (urlProduct) {
-        return urlProduct.trim().toLowerCase();
-    }
-
-    if (
-        typeof window.NSH_PRODUCT_ID === "string" &&
-        window.NSH_PRODUCT_ID.trim() !== ""
-    ) {
-        return window.NSH_PRODUCT_ID
-            .trim()
-            .toLowerCase();
-    }
-
-    return "template";
+    const params = new URLSearchParams(window.location.search);
+    return (params.get("product") || "template").trim().toLowerCase();
 }
 
 function getProductConfig(productKey) {
@@ -353,7 +326,7 @@ function initializeQuiz() {
         ) {
 
             throw new Error(
-                `Question bank not found. Make sure the selected question bank is available: ${ACTIVE_PRODUCT.questionBank}`
+                "Question bank not found. Make sure the selected question bank is available: ${ACTIVE_PRODUCT.questionBank}"
             );
 
         }
@@ -2354,7 +2327,6 @@ function showError(
 /* ============================================================
    END OF MASTER QUIZ ENGINE V1
    ============================================================ */
-
 
 
 
