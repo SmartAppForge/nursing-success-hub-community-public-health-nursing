@@ -256,7 +256,7 @@ const DOM = {
         document.getElementById("restart-btn"),
 
     gumroadBtn:
-        document.getElementById("gumroad-btn"),
+        document.getElementById("https://ebookservice.gumroad.com/?section=PJBzNNizT0MF21VU51av9g==#PJBzNNizT0MF21VU51av9g=="),
 
     /* Review */
 
