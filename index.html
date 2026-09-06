@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Nursing Success Hub - Interactive NCLEX-RN Practice Quiz"
+    >
+
+    <title>Nursing Success Hub | Adaptive Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         APPLICATION
+    ========================================================== -->
+
+    <div id="app">
+
+        <!-- =====================================================
+             START SCREEN
+        ====================================================== -->
+
+        <section
+            id="start-screen"
+            class="screen"
+            aria-labelledby="start-title"
+        >
+
+            <div class="start-card">
+
+                <div class="brand">
+                    <div class="brand-icon">NSH</div>
+
+                    <div>
+                        <span class="brand-name">
+                            Nursing Success Hub
+                        </span>
+
+                        <span class="brand-tagline">
+                            Interactive Nursing Education
+                        </span>
+                    </div>
+                </div>
+
+                <div class="start-content">
+
+                    <span class="product-label">
+                        NCLEX-RN PRACTICE
+                    </span>
+
+                    <h1 id="start-title">
+                        NCLEX-RN Practice Questions
+                    </h1>
+
+                    <p id="start-description">
+                        Test your nursing knowledge with an interactive
+                        practice quiz designed for structured review.
+                    </p>
+
+                    <div class="quiz-info">
+
+                        <div class="info-item">
+                            <span class="info-value" id="start-question-count">
+                                120
+                            </span>
+
+                            <span class="info-label">
+                                Questions
+                            </span>
+                        </div>
+
+                        <div class="info-divider"></div>
+
+                        <div class="info-item">
+                            <span class="info-value" id="start-question-per-page">
+                                5
+                            </span>
+
+                            <span class="info-label">
+                                Per Page
+                            </span>
+                        </div>
+
+                        <div class="info-divider"></div>
+
+                        <div class="info-item">
+                            <span class="info-value" id="start-page-count">
+                                24
+                            </span>
+
+                            <span class="info-label">
+                                Pages
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        id="start-btn"
+                        class="primary-btn large-btn"
+                        type="button"
+                    >
+                        START QUIZ
+                    </button>
+
+                    <p class="start-note">
+                        Answer each question carefully. Your answers
+                        will be locked after selection.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             QUIZ SCREEN
+        ====================================================== -->
+
+        <section
+            id="quiz-screen"
+            class="screen hidden"
+            aria-labelledby="quiz-title"
+        >
+
+            <div class="quiz-container">
+
+                <!-- HEADER -->
+
+                <header class="quiz-header">
+
+                    <div class="header-brand">
+                        <div class="mini-brand-icon">
+                            NSH
+                        </div>
+
+                        <div>
+                            <span class="header-brand-name">
+                                Nursing Success Hub
+                            </span>
+
+                            <span
+                                id="quiz-title"
+                                class="header-product-name"
+                            >
+                                NCLEX-RN Practice
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="page-indicator">
+                        <span id="page-number">
+                            Page 1 / 24
+                        </span>
+                    </div>
+
+                </header>
+
+
+                <!-- PROGRESS -->
+
+                <div class="progress-section">
+
+                    <div class="progress-top">
+
+                        <span id="question-counter">
+                            Questions 1–5 / 120
+                        </span>
+
+                        <span id="completion-percentage">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="progress-bar"
+                        role="progressbar"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                        aria-label="Quiz progress"
+                    >
+                        <div
+                            id="progress-fill"
+                            class="progress-fill"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <!-- QUIZ CONTENT -->
+
+                <main id="quiz-content">
+
+                    <div
+                        id="questions-container"
+                        class="questions-container"
+                    >
+                        <!-- Questions are generated by JavaScript -->
+                    </div>
+
+                </main>
+
+
+                <!-- VALIDATION MESSAGE -->
+
+                <div
+                    id="validation-message"
+                    class="validation-message hidden"
+                    role="alert"
+                >
+                    Please answer all questions on this page before continuing.
+                </div>
+
+
+                <!-- NAVIGATION -->
+
+                <div class="quiz-navigation">
+
+                    <button
+                        id="previous-btn"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        ← Previous
+                    </button>
+
+                    <button
+                        id="next-btn"
+                        class="primary-btn"
+                        type="button"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RESULTS SCREEN
+        ====================================================== -->
+
+        <section
+            id="results-screen"
+            class="screen hidden"
+            aria-labelledby="results-title"
+        >
+
+            <div class="results-container">
+
+                <div class="results-card">
+
+                    <div class="results-icon">
+                        ✓
+                    </div>
+
+                    <span class="product-label">
+                        QUIZ COMPLETE
+                    </span>
+
+                    <h1 id="results-title">
+                        Great Work!
+                    </h1>
+
+                    <p class="results-subtitle">
+                        You have completed the quiz.
+                    </p>
+
+
+                    <!-- SCORE -->
+
+                    <div class="score-circle">
+
+                        <span
+                            id="score-percentage"
+                            class="score-percentage"
+                        >
+                            0%
+                        </span>
+
+                        <span class="score-label">
+                            Score
+                        </span>
+
+                    </div>
+
+
+                    <!-- SCORE DETAILS -->
+
+                    <div class="score-details">
+
+                        <div class="score-detail">
+                            <span
+                                id="correct-count"
+                                class="detail-number correct"
+                            >
+                                0
+                            </span>
+
+                            <span class="detail-label">
+                                Correct
+                            </span>
+                        </div>
+
+                        <div class="score-detail-divider"></div>
+
+                        <div class="score-detail">
+                            <span
+                                id="incorrect-count"
+                                class="detail-number incorrect"
+                            >
+                                0
+                            </span>
+
+                            <span class="detail-label">
+                                Incorrect
+                            </span>
+                        </div>
+
+                        <div class="score-detail-divider"></div>
+
+                        <div class="score-detail">
+                            <span
+                                id="total-count"
+                                class="detail-number"
+                            >
+                                120
+                            </span>
+
+                            <span class="detail-label">
+                                Total
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- LEVEL -->
+
+                    <div class="level-box">
+
+                        <span class="level-title">
+                            Performance Level
+                        </span>
+
+                        <strong id="performance-level">
+                            Excellent
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="results-actions">
+
+                        <button
+                            id="review-btn"
+                            class="primary-btn"
+                            type="button"
+                        >
+                            ANSWER REVIEW
+                        </button>
+
+                        <button
+                            id="restart-btn"
+                            class="secondary-btn"
+                            type="button"
+                        >
+                            RESTART QUIZ
+                        </button>
+
+                    </div>
+
+
+                    <!-- GUMROAD CTA -->
+
+                    <div class="gumroad-cta">
+
+                        <div class="cta-content">
+
+                            <span class="cta-label">
+                                CONTINUE YOUR STUDY
+                            </span>
+
+                            <h2>
+                                Get the Complete Study Guide
+                            </h2>
+
+                            <p>
+                                Continue reviewing with the Nursing
+                                Success Hub study resources.
+                            </p>
+
+                        </div>
+
+                        <a
+                            id="gumroad-btn"
+                            class="gumroad-btn"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GET STUDY GUIDE →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             REVIEW SCREEN
+        ====================================================== -->
+
+        <section
+            id="review-screen"
+            class="screen hidden"
+            aria-labelledby="review-title"
+        >
+
+            <div class="review-container">
+
+                <header class="review-header">
+
+                    <div>
+
+                        <span class="product-label">
+                            ANSWER REVIEW
+                        </span>
+
+                        <h1 id="review-title">
+                            Review Your Answers
+                        </h1>
+
+                        <p>
+                            Review your selected answers and compare
+                            them with the correct answers.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="review-back-btn"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        ← Back to Results
+                    </button>
+
+                </header>
+
+
+                <div
+                    id="review-container"
+                    class="review-list"
+                >
+                    <!-- Review generated by JavaScript -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RESTART MODAL
+        ====================================================== -->
+
+        <div
+            id="restart-modal"
+            class="modal-overlay hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="restart-modal-title"
+        >
+
+            <div class="modal-card">
+
+                <div class="modal-icon">
+                    !
+                </div>
+
+                <h2 id="restart-modal-title">
+                    Restart Quiz?
+                </h2>
+
+                <p>
+                    Are you sure you want to restart the quiz?
+                    Your current progress will be deleted.
+                </p>
+
+                <div class="modal-actions">
+
+                    <button
+                        id="cancel-restart-btn"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        id="confirm-restart-btn"
+                        class="danger-btn"
+                        type="button"
+                    >
+                        Restart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ERROR SCREEN
+        ====================================================== -->
+
+        <section
+            id="error-screen"
+            class="screen hidden"
+        >
+
+            <div class="error-card">
+
+                <div class="error-icon">
+                    !
+                </div>
+
+                <h1>
+                    Quiz Initialization Error
+                </h1>
+
+                <p id="error-message">
+                    An error occurred while loading the quiz.
+                </p>
+
+                <p class="error-help">
+                    Please check your question bank and refresh the page.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- Product registry -->
+    <script src="config/products.js"></script>
+
+    <!-- Master quiz engine. It dynamically loads the selected question bank. -->
+    <script src="app.js"></script>
+
+</body>
+</html>
