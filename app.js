@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    NURSING SUCCESS HUB
    MASTER QUIZ ENGINE V1
 
@@ -256,7 +256,7 @@ const DOM = {
         document.getElementById("restart-btn"),
 
     gumroadBtn:
-        document.getElementById("https://ebookservice.gumroad.com/?section=PJBzNNizT0MF21VU51av9g==#PJBzNNizT0MF21VU51av9g=="),
+        document.getElementById("gumroad-btn"),
 
     /* Review */
 
@@ -1362,12 +1362,12 @@ function updateNavigation() {
     if (isLastPage) {
 
         DOM.nextBtn.textContent =
-            "Finish Quiz âœ“";
+            "Finish Quiz ✓";
 
     } else {
 
         DOM.nextBtn.textContent =
-            "Next â†’";
+            "Next →";
 
     }
 
