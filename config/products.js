@@ -24,7 +24,7 @@ const PRODUCTS = {
         label: "PRACTICE QUIZ",
         subtitle: "Test your knowledge with an interactive practice quiz designed for structured review.",
         questionBank: "questions/Community & Public Health Nursing.js",
-        gumroadUrl: "#",
+        gumroadUrl: "https://ebookservice.gumroad.com/?section=PJBzNNizT0MF21VU51av9g==#PJBzNNizT0MF21VU51av9g==",
         gumroadButtonText: "GET STUDY GUIDE ->",
         questionsPerPage: 5,
         showProgress: true,
